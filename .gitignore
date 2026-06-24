@@ -1,0 +1,71 @@
+# Python bytecode & caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Distribution / packaging
+*.egg
+*.egg-info/
+.eggs/
+dist/
+build/
+wheels/
+share/python-wheels/
+pip-wheel-metadata/
+pip-log.txt
+pip-delete-this-directory.txt
+develop-eggs/
+downloads/
+eggs/
+parts/
+sdist/
+var/
+*.manifest
+*.spec
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+.env/
+.virtualenv/
+
+# Environment variables (machine-local; copy from .env.example)
+.env
+.env.*
+!.env.example
+
+# Python version & toolchain (local)
+.python-version
+.pdm-python
+
+# uv (uv.lock is committed; local cache is not)
+.uv/
+
+# Other env / test runners
+.tox/
+.nox/
+.hypothesis/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
+
+# Conda (if created inside project)
+.conda/
+conda-meta/
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/outputs/
+
+# IDE
+.vscode/*
+!.vscode/settings.json

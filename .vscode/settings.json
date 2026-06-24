@@ -1,0 +1,8 @@
+{
+  "python.defaultInterpreterPath": "D:\\autornd\\SK Autonomous R&D\\AutoRnDEnv\\.venv\\Scripts\\python.exe",
+  "python.condaPath": "C:\\Users\\Admin\\miniconda3\\Scripts\\conda.exe",
+  "python.terminal.activateEnvironment": true,
+  "terminal.integrated.env.windows": {
+    "UV_PROJECT_ENVIRONMENT": "D:\\autornd\\SK Autonomous R&D\\AutoRnDEnv\\.venv"
+  }
+}

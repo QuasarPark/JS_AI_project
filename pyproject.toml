@@ -1,0 +1,26 @@
+[project]
+name = "silseup"
+version = "0.1.0"
+description = "SK Autonomous R&D 실습 (Jupyter notebooks)"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "catboost>=1.2.10",
+    "ipykernel>=7.3.0",
+    "numba>=0.63.0",
+    "numexpr>=2.14.1",
+    "numpy>=2.4.0,<2.5",
+    "openai>=2.43.0",
+    "pandas>=3.0.3",
+    "polars>=1.41.2",
+    "python-dotenv>=1.2.2",
+    "scikit-learn>=1.9.0",
+    "scipy>=1.18.0",
+    "seaborn>=0.13.2",
+    "statsmodels>=0.14.6",
+    "sympy>=1.14.0",
+    "torch>=2.12.1",
+    "xgboost>=3.3.0",
+]
+
+[tool.uv]
+# venv: AutoRnDEnv\.venv (base python = miniconda3) — see .env / .vscode/settings.json
