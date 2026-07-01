@@ -69,3 +69,7 @@ notebooks/outputs/
 # IDE
 .vscode/*
 !.vscode/settings.json
+
+# Large ML artifacts (exceed GitHub 100MB file limit; keep local only)
+**/X_train.npy
+**/weight_final.pt
