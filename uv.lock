@@ -798,6 +798,12 @@ wheels = [
 ]
 
 [[package]]
+name = "chronos"
+version = "0.3"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/f7/96/a7a16dbd78230b071a23efd8e4c28bd45819c340f9db84b890dd8c3ff11d/chronos-0.3.zip", hash = "sha256:d41100d4b4dfe22bd0df08d87de6962da2a5ee70321fbe548d8a22fc7d4fd5ed", size = 10858, upload-time = "2015-05-01T17:17:00.402Z" }
+
+[[package]]
 name = "chronos-forecasting"
 version = "2.3.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1853,6 +1859,9 @@ wheels = [
 ]
 
 [package.optional-dependencies]
+cli = [
+    { name = "inquirerpy" },
+]
 hf-xet = [
     { name = "hf-xet" },
 ]
@@ -1918,6 +1927,19 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/e4/06/b56dfa750b44e86157093bc8fca0ab81dccbf5260510de4eaf1cb69b5b99/importlib_resources-7.1.0.tar.gz", hash = "sha256:0722d4c6212489c530f2a145a34c0a7a3b4721bc96a15fada5930e2a0b760708", size = 44985, upload-time = "2026-04-12T16:36:09.232Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/8a/db/55a262f3606bebcae07cc14095338471ad7c0bbcaa37707e6f0ee49725b7/importlib_resources-7.1.0-py3-none-any.whl", hash = "sha256:1bd7b48b4088eddb2cd16382150bb515af0bd2c70128194392725f82ad2c96a1", size = 37232, upload-time = "2026-04-12T16:36:08.219Z" },
+]
+
+[[package]]
+name = "inquirerpy"
+version = "0.3.4"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pfzy" },
+    { name = "prompt-toolkit" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/64/73/7570847b9da026e07053da3bbe2ac7ea6cde6bb2cbd3c7a5a950fa0ae40b/InquirerPy-0.3.4.tar.gz", hash = "sha256:89d2ada0111f337483cb41ae31073108b2ec1e618a49d7110b0d7ade89fc197e", size = 44431, upload-time = "2022-06-27T23:11:20.598Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ce/ff/3b59672c47c6284e8005b42e84ceba13864aa0f39f067c973d1af02f5d91/InquirerPy-0.3.4-py3-none-any.whl", hash = "sha256:c65fdfbac1fa00e3ee4fb10679f4d3ed7a012abf4833910e63c295827fe2a7d4", size = 67677, upload-time = "2022-06-27T23:11:17.723Z" },
 ]
 
 [[package]]
@@ -3544,6 +3566,15 @@ wheels = [
 ]
 
 [[package]]
+name = "pfzy"
+version = "0.3.4"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/d9/5a/32b50c077c86bfccc7bed4881c5a2b823518f5450a30e639db5d3711952e/pfzy-0.3.4.tar.gz", hash = "sha256:717ea765dd10b63618e7298b2d98efd819e0b30cd5905c9707223dceeb94b3f1", size = 8396, upload-time = "2022-01-28T02:26:17.946Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/8c/d7/8ff98376b1acc4503253b685ea09981697385ce344d4e3935c2af49e044d/pfzy-0.3.4-py3-none-any.whl", hash = "sha256:5f50d5b2b3207fa72e7ec0ef08372ef652685470974a107d0d4999fc5a903a96", size = 8537, upload-time = "2022-01-28T02:26:16.047Z" },
+]
+
+[[package]]
 name = "pillow"
 version = "11.3.0"
 source = { registry = "https://pypi.org/simple" }
@@ -4800,6 +4831,8 @@ source = { virtual = "." }
 dependencies = [
     { name = "autogluon" },
     { name = "catboost" },
+    { name = "chronos" },
+    { name = "chronos-forecasting" },
     { name = "datasets" },
     { name = "ddgs" },
     { name = "duckduckgo-search" },
@@ -4839,6 +4872,7 @@ dependencies = [
     { name = "sympy" },
     { name = "tabpfn" },
     { name = "tabulate" },
+    { name = "timesfm" },
     { name = "torch" },
     { name = "transformers" },
     { name = "xgboost" },
@@ -4849,6 +4883,8 @@ dependencies = [
 requires-dist = [
     { name = "autogluon", specifier = "==1.5.0" },
     { name = "catboost", specifier = ">=1.2.10" },
+    { name = "chronos", specifier = ">=0.3" },
+    { name = "chronos-forecasting", specifier = ">=2.3.0" },
     { name = "datasets", specifier = ">=4.0.0" },
     { name = "ddgs", specifier = ">=9.14.4" },
     { name = "duckduckgo-search", specifier = ">=8.1.1" },
@@ -4888,6 +4924,7 @@ requires-dist = [
     { name = "sympy", specifier = ">=1.14.0" },
     { name = "tabpfn", specifier = ">=6.2.0,<6.2.1" },
     { name = "tabulate", specifier = ">=0.10.0" },
+    { name = "timesfm", specifier = ">=2.0.1" },
     { name = "torch", specifier = ">=2.6,<2.10" },
     { name = "transformers", specifier = ">=4.51.0,<4.58" },
     { name = "xgboost", specifier = ">=2.0,<3.2" },
@@ -5374,6 +5411,20 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/8c/46/002b68de6827091d5ae90b048f326e8aad8d953520950e5ce1508879414f/tiktoken-0.13.0-cp313-cp313t-musllinux_1_2_aarch64.whl", hash = "sha256:e28157350f7ebf35008dd8e9e0fdb621f976e4230c881099c85e8cf07eaa50e2", size = 1181826, upload-time = "2026-05-15T04:50:56.296Z" },
     { url = "https://files.pythonhosted.org/packages/db/c6/d393e3185a276505182f7abd93fe714f3c444a2be9180798fa052347504e/tiktoken-0.13.0-cp313-cp313t-musllinux_1_2_x86_64.whl", hash = "sha256:165cf1820ea4a354985c2490a5205d4cc74661c934aca79dd0368232fff94e0f", size = 1239489, upload-time = "2026-05-15T04:50:57.918Z" },
     { url = "https://files.pythonhosted.org/packages/b7/4d/bc07d1f1635d4897a202acc0ae11c2886eaa7325c359ba4741b47bf8e225/tiktoken-0.13.0-cp313-cp313t-win_amd64.whl", hash = "sha256:6c43a675ca14f6f2749ba7f12075d37456015a24b859f2517b9beb4ef30807ec", size = 873820, upload-time = "2026-05-15T04:50:59.528Z" },
+]
+
+[[package]]
+name = "timesfm"
+version = "2.0.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "huggingface-hub", extra = ["cli"] },
+    { name = "numpy" },
+    { name = "safetensors" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/ac/a0/39148b2d692376d1e8d5969fadf7e7565c10e4505b4de197115c38270f65/timesfm-2.0.1.tar.gz", hash = "sha256:3d8f65a9acc9e0471fd7891c7f4be75b96d5e528a208fdc945983363f8302bb1", size = 43827, upload-time = "2026-06-08T17:21:24.193Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/2c/97/e0bfa90617be01e1a789cc04e912f0129b316d8caaa4b72b014a19319af6/timesfm-2.0.1-py3-none-any.whl", hash = "sha256:0da183f218c5f59a9695abd73cb571b8cc90e4bd52d9d8017fb722f2ea3d93d8", size = 44714, upload-time = "2026-06-08T17:21:23.17Z" },
 ]
 
 [[package]]

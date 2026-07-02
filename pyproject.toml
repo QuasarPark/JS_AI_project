@@ -6,6 +6,8 @@ requires-python = ">=3.13,<3.14"
 dependencies = [
     "autogluon==1.5.0",
     "catboost>=1.2.10",
+    "chronos>=0.3",
+    "chronos-forecasting>=2.3.0",
     "datasets>=4.0.0",
     "ddgs>=9.14.4",
     "duckduckgo-search>=8.1.1",
@@ -45,6 +47,7 @@ dependencies = [
     "sympy>=1.14.0",
     "tabpfn>=6.2.0,<6.2.1",
     "tabulate>=0.10.0",
+    "timesfm>=2.0.1",
     "torch>=2.6,<2.10",
     "transformers>=4.51.0,<4.58",
     "xgboost>=2.0,<3.2",
