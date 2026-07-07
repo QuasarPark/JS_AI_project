@@ -4985,6 +4985,21 @@ wheels = [
 ]
 
 [[package]]
+name = "shap-hypetune"
+version = "0.1.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+    { name = "scipy" },
+    { name = "shap", version = "0.50.0", source = { registry = "https://pypi.org/simple" }, marker = "platform_machine == 'x86_64' and sys_platform == 'darwin'" },
+    { name = "shap", version = "0.52.0", source = { registry = "https://pypi.org/simple" }, marker = "platform_machine != 'x86_64' or sys_platform != 'darwin'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/ae/6a/ec49a182447e2ee152459f740a50c87c19c84bf3391e1f087df716baf1c5/shap-hypetune-0.1.1.tar.gz", hash = "sha256:468c8cc6c289ce1ac8783e7d69847a80816a4a42ee4a13e0e022c9b00e7e5d90", size = 12795, upload-time = "2021-08-07T07:58:35.498Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/08/16/be6f8db1635fec1f0a673495e49c0518c8d812572a98baf4d5b89fb5f1e5/shap_hypetune-0.1.1-py3-none-any.whl", hash = "sha256:2461cf0f5cab7e1e8253539203df39e64fef0b32a820a34be910aec9b0115b43", size = 14495, upload-time = "2021-08-07T07:58:33.362Z" },
+]
+
+[[package]]
 name = "shellingham"
 version = "1.5.4"
 source = { registry = "https://pypi.org/simple" }
@@ -5022,6 +5037,7 @@ dependencies = [
     { name = "langchain-core" },
     { name = "langchain-openai" },
     { name = "langchain-text-splitters" },
+    { name = "lightgbm" },
     { name = "mrmr-selection" },
     { name = "numba" },
     { name = "numexpr" },
@@ -5045,6 +5061,7 @@ dependencies = [
     { name = "seaborn" },
     { name = "shap", version = "0.50.0", source = { registry = "https://pypi.org/simple" }, marker = "platform_machine == 'x86_64' and sys_platform == 'darwin'" },
     { name = "shap", version = "0.52.0", source = { registry = "https://pypi.org/simple" }, marker = "platform_machine != 'x86_64' or sys_platform != 'darwin'" },
+    { name = "shap-hypetune" },
     { name = "statsmodels" },
     { name = "streamlit" },
     { name = "sympy" },
@@ -5054,6 +5071,7 @@ dependencies = [
     { name = "torch" },
     { name = "transformers" },
     { name = "xgboost" },
+    { name = "xicorpy" },
     { name = "yfinance" },
 ]
 
@@ -5083,6 +5101,7 @@ requires-dist = [
     { name = "langchain-core", specifier = ">=1.4.8" },
     { name = "langchain-openai", specifier = ">=1.3.3" },
     { name = "langchain-text-splitters", specifier = ">=1.1.2" },
+    { name = "lightgbm", specifier = ">=4.6.0" },
     { name = "mrmr-selection", specifier = ">=0.2.8" },
     { name = "numba", specifier = ">=0.63.0" },
     { name = "numexpr", specifier = ">=2.14.1" },
@@ -5105,6 +5124,7 @@ requires-dist = [
     { name = "scipy", specifier = ">=1.5.4,<1.17" },
     { name = "seaborn", specifier = ">=0.13.2" },
     { name = "shap", specifier = ">=0.50.0" },
+    { name = "shap-hypetune", specifier = ">=0.1.1" },
     { name = "statsmodels", specifier = ">=0.14.6" },
     { name = "streamlit", specifier = ">=1.58.0" },
     { name = "sympy", specifier = ">=1.14.0" },
@@ -5114,6 +5134,7 @@ requires-dist = [
     { name = "torch", specifier = ">=2.6,<2.10" },
     { name = "transformers", specifier = ">=4.51.0,<4.58" },
     { name = "xgboost", specifier = ">=2.0,<3.2" },
+    { name = "xicorpy", specifier = ">=0.6" },
     { name = "yfinance", specifier = ">=1.4.1" },
 ]
 
@@ -6226,6 +6247,20 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/99/f7/ceb06e6b959e5a8b303883482ecad346495641947679e3f735ae8ac1caa7/xgboost-3.1.3-py3-none-manylinux_2_28_aarch64.whl", hash = "sha256:2e31482633883b2e95fda6055db654bbfac82e10d91ad3d9929086ebd28eb1c4", size = 115346575, upload-time = "2026-01-10T00:19:11.44Z" },
     { url = "https://files.pythonhosted.org/packages/6c/9c/9d4ad7f586698bad52a570d2bf81138e500a5d9f32723c2b4ed1dd9252d8/xgboost-3.1.3-py3-none-manylinux_2_28_x86_64.whl", hash = "sha256:687504d1d76dc797df08b0dbe8b83d58629cdc06df52378f617164d16142bf2c", size = 115926894, upload-time = "2026-01-10T00:19:49.123Z" },
     { url = "https://files.pythonhosted.org/packages/3a/d8/4d4ae25452577f2dfabc66b60e712e7c01f9fe6c389fa88c546c2f427c4d/xgboost-3.1.3-py3-none-win_amd64.whl", hash = "sha256:3fe349b4c6030f0d66e166a3a6b7d470e776d530ea240d77335e36144cbe132a", size = 72011993, upload-time = "2026-01-10T00:17:42.98Z" },
+]
+
+[[package]]
+name = "xicorpy"
+version = "0.6"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+    { name = "pandas" },
+    { name = "scikit-learn" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/41/bb/b58e83395ac3484db99dda2ca95860233bcb8733cb6661c694d17fc125ad/xicorpy-0.6.tar.gz", hash = "sha256:1d463260f7e0fee09d735021718144d9988df8855a980925fcc02b91715ba0f0", size = 9215, upload-time = "2024-07-27T02:23:24.811Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/fd/42/48b407b5a4950ca1eee86888f7522756cd653a6546633a59c960542ea8d0/xicorpy-0.6-py3-none-any.whl", hash = "sha256:ec16ba9ad0fbef7fbaaa00f0dff58c36f7c5c5ad6f8875d8c59917360877650d", size = 10561, upload-time = "2024-07-27T02:23:23.507Z" },
 ]
 
 [[package]]
