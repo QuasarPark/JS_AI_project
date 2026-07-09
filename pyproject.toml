@@ -46,6 +46,7 @@ dependencies = [
     "pypdf>=6.14.2",
     "python-dotenv>=1.2.2",
     "pytz>=2026.2",
+    "rank-bm25>=0.2.2",
     "requests>=2.34.2",
     "scikit-learn>=1.4.0,<1.8.0",
     "scipy>=1.5.4,<1.17",
