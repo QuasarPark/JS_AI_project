@@ -80,9 +80,15 @@ def train_xgboost_model() -> dict:
 
 
 def _load_bundle() -> dict:
+    """저장된 모델 로드. 버전 불일치 등으로 깨지면 재학습."""
     if not MODEL_PATH.exists():
         return train_xgboost_model()
-    return joblib.load(MODEL_PATH)
+    try:
+        bundle = joblib.load(MODEL_PATH)
+        _ = bundle["model"].n_estimators
+        return bundle
+    except (AttributeError, ValueError, TypeError, KeyError):
+        return train_xgboost_model()
 
 
 def predict_failure_xgboost_raw(

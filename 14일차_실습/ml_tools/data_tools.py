@@ -33,12 +33,28 @@ except ImportError:
 
 
 def _file_kind(filename: str) -> str:
+    """CSV 유형: failure | anomaly | unknown."""
     df = pd.read_csv(safe_data_path(filename), nrows=1)
     cols = set(df.columns)
     if "Failure" in cols:
         return "failure"
     if {"0", "1", "Y"}.issubset(cols):
         return "anomaly"
+    return "unknown"
+
+
+def _require_kind(filename: str, expected: str) -> None:
+    kind = _file_kind(filename)
+    if kind == expected:
+        return
+    if expected == "failure":
+        raise ValueError(
+            f"{filename}은 고장 예측용이 아닙니다. failure_equipment.csv를 사용하세요."
+        )
+    if expected == "anomaly":
+        raise ValueError(
+            f"{filename}은 이상 탐지용이 아닙니다. anomaly_sensor.csv를 사용하세요."
+        )
     raise ValueError(
         f"{filename} 형식을 알 수 없습니다. Failure 컬럼(고장) 또는 0,1,Y(이상탐지) 필요."
     )
@@ -79,11 +95,16 @@ def list_data_files() -> str:
     files = list_csv_files()
     if not files:
         return f"data/ 폴더({DATA_DIR})에 CSV가 없습니다."
+    kind_labels = {
+        "failure": "설비 고장",
+        "anomaly": "이상 탐지",
+        "unknown": "미지원(목록만)",
+    }
     lines = [f"data/ 폴더 CSV ({len(files)}개):"]
     for name in files:
         kind = _file_kind(name)
         df = pd.read_csv(safe_data_path(name))
-        label = "설비 고장" if kind == "failure" else "이상 탐지"
+        label = kind_labels.get(kind, kind)
         lines.append(f"- {name}: {len(df)}행, 유형={label}")
     return "\n".join(lines)
 
@@ -98,7 +119,12 @@ def preview_data_sample(filename: str, sample_index: int) -> str:
     """
     row = load_sample_row(filename, sample_index)
     kind = _file_kind(filename)
-    header = f"{filename} — {sample_index}번 샘플 (유형: {kind})"
+    kind_labels = {
+        "failure": "설비 고장",
+        "anomaly": "이상 탐지",
+        "unknown": "미지원",
+    }
+    header = f"{filename} — {sample_index}번 샘플 (유형: {kind_labels.get(kind, kind)})"
     body = row.to_string()
     return f"{header}\n{body}"
 
@@ -111,8 +137,7 @@ def xgboost_predict_from_data(filename: str, sample_index: int) -> str:
         filename: failure_equipment.csv 등 Failure 컬럼이 있는 CSV
         sample_index: 샘플 번호 (1부터). 예: 3 → 3번째 행
     """
-    if _file_kind(filename) != "failure":
-        raise ValueError(f"{filename}은 고장 예측용이 아닙니다. failure_equipment.csv를 사용하세요.")
+    _require_kind(filename, "failure")
     row = load_sample_row(filename, sample_index)
     params = _failure_row_to_params(row)
     result = predict_failure_xgboost_raw(**params)
@@ -128,8 +153,7 @@ def logistic_predict_from_data(filename: str, sample_index: int) -> str:
         filename: failure_equipment.csv 등
         sample_index: 샘플 번호 (1부터)
     """
-    if _file_kind(filename) != "failure":
-        raise ValueError(f"{filename}은 고장 예측용이 아닙니다.")
+    _require_kind(filename, "failure")
     row = load_sample_row(filename, sample_index)
     params = _failure_row_to_params(row)
     result = predict_failure_logistic_raw(**params)
@@ -145,8 +169,7 @@ def anomaly_detect_from_data(filename: str, sample_index: int) -> str:
         filename: anomaly_sensor.csv (컬럼 0, 1, Y)
         sample_index: 샘플 번호 (1부터)
     """
-    if _file_kind(filename) != "anomaly":
-        raise ValueError(f"{filename}은 이상 탐지용이 아닙니다. anomaly_sensor.csv를 사용하세요.")
+    _require_kind(filename, "anomaly")
     row = load_sample_row(filename, sample_index)
     result = detect_anomaly_oneclass_raw(float(row["0"]), float(row["1"]))
     actual = int(row["Y"])

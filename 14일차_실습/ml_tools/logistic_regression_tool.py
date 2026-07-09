@@ -73,9 +73,16 @@ def train_logistic_model() -> dict:
 
 
 def _load_bundle() -> dict:
+    """저장된 모델 로드. sklearn 버전 불일치 등으로 깨지면 재학습."""
     if not MODEL_PATH.exists():
         return train_logistic_model()
-    return joblib.load(MODEL_PATH)
+    try:
+        bundle = joblib.load(MODEL_PATH)
+        # 구버전/신버전 pickle 불일치 시 predict_proba가 AttributeError를 냄
+        _ = bundle["model"].multi_class
+        return bundle
+    except (AttributeError, ValueError, TypeError, KeyError):
+        return train_logistic_model()
 
 
 def predict_failure_logistic_raw(

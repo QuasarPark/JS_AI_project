@@ -49,9 +49,15 @@ def train_oneclass_model(nu: float = 0.1) -> dict:
 
 
 def _load_bundle() -> dict:
+    """저장된 모델 로드. sklearn 버전 불일치 등으로 깨지면 재학습."""
     if not MODEL_PATH.exists():
         return train_oneclass_model()
-    return joblib.load(MODEL_PATH)
+    try:
+        bundle = joblib.load(MODEL_PATH)
+        _ = bundle["model"].nu
+        return bundle
+    except (AttributeError, ValueError, TypeError, KeyError):
+        return train_oneclass_model()
 
 
 def detect_anomaly_oneclass_raw(feature_0: float, feature_1: float) -> dict:
