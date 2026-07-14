@@ -1,8 +1,24 @@
 {
-  "python.defaultInterpreterPath": "D:\\autornd\\SK Autonomous R&D\\AutoRnDEnv\\.venv\\Scripts\\python.exe",
+  "python.defaultInterpreterPath": "D:\\autornd\\SK Autonomous R&D\\AutoRnDEnv_tutorial\\.venv\\Scripts\\python.exe",
+  "python.venvPath": "D:\\autornd\\SK Autonomous R&D\\AutoRnDEnv_tutorial",
   "python.condaPath": "C:\\Users\\Admin\\miniconda3\\Scripts\\conda.exe",
   "python.terminal.activateEnvironment": true,
   "terminal.integrated.env.windows": {
-    "UV_PROJECT_ENVIRONMENT": "D:\\autornd\\SK Autonomous R&D\\AutoRnDEnv\\.venv"
-  }
+    "UV_PROJECT_ENVIRONMENT": "D:\\autornd\\SK Autonomous R&D\\AutoRnDEnv_tutorial\\.venv"
+  },
+  "terminal.integrated.profiles.windows": {
+    "PowerShell (AutoRnD)": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell",
+      "env": {
+        "UV_PROJECT_ENVIRONMENT": "D:\\autornd\\SK Autonomous R&D\\AutoRnDEnv_tutorial\\.venv"
+      },
+      "args": [
+        "-NoExit",
+        "-Command",
+        "& 'D:\\autornd\\SK Autonomous R&D\\AutoRnDEnv_tutorial\\.venv\\Scripts\\Activate.ps1'"
+      ]
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "PowerShell (AutoRnD)"
 }
